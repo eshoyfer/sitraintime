@@ -1,0 +1,1 @@
+web: gunicorn sitraintime:app --log-file=-

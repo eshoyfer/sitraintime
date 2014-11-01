@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}{{ station_name }} - SI Train Time{% endblock %}
+{% block description %}Get the next train arrival times for {{ station_name }}, a station on the Staten Island Railway (SIR).{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h3>{{ station_name }}</h3> 
+</div>
+
+<a href="{{ request.path }}" type="button" style="width:100%" class="btn btn-primary">Refresh (updated {{ last_updated }})</a>
+
+<br><br>
+
+<div class="btn-group btn-group-justified">
+  <a href="#st_george" type="button" class="btn btn-default"> <span class="glyphicon glyphicon-arrow-up"></span> To St George </a>
+  <a href="#tottenville" type="button" class="btn btn-default"> <span class="glyphicon glyphicon-arrow-down"></span> To Tottenville </a>
+</div>
+
+<br><br>
+
+<div id="st_george" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">To St George</h3>
+  </div>
+  <ul class="list-group">
+    <a style="text-decoration: none;" href="/train/{{ st_george[0]['id'] }}"><li class="list-group-item list-group-item-danger"><strong>{{ st_george[0]['delta']}} </strong>({{ st_george[0]['stop_time'] }}) {{ st_george[0]['label']|safe }}</li></a>
+    <a style="text-decoration: none;" href="/train/{{ st_george[1]['id'] }}"><li class="list-group-item list-group-item-success"><strong>{{ st_george[1]['delta']}} </strong>({{ st_george[1]['stop_time'] }}) {{ st_george[1]['label']|safe }}</li></a>
+    <a style="text-decoration: none;" href="/train/{{ st_george[2]['id'] }}"><li class="list-group-item list-group-item-info"><strong>{{ st_george[2]['delta']}} </strong>({{ st_george[2]['stop_time'] }}) {{ st_george[2]['label']|safe }} </li></a>
+    <a style="text-decoration: none;" href="/train/{{ st_george[3]['id'] }}"><li class="list-group-item list-group-item-info"><strong>{{ st_george[3]['delta']}} </strong>({{ st_george[3]['stop_time'] }}) {{ st_george[3]['label']|safe }}</li></a>
+  </ul>
+</div>
+
+<div id="tottenville" class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">To Tottenville</h3>
+  </div>
+  <ul class="list-group">
+    <a style="text-decoration: none;" href="/train/{{ tottenville[0]['id'] }}"><li class="list-group-item list-group-item-danger"><strong>{{ tottenville[0]['delta']}} </strong>({{ tottenville[0]['stop_time'] }}) {{ tottenville[0]['label']|safe }}</li></a>
+    <a style="text-decoration: none;" href="/train/{{ tottenville[1]['id'] }}"><li class="list-group-item list-group-item-success"><strong>{{ tottenville[1]['delta']}} </strong>({{ tottenville[1]['stop_time'] }}) {{ tottenville[1]['label']|safe }}</li></a>
+    <a style="text-decoration: none;" href="/train/{{ tottenville[2]['id'] }}"><li class="list-group-item list-group-item-info"><strong>{{ tottenville[2]['delta']}} </strong>({{ tottenville[2]['stop_time'] }}) {{ tottenville[2]['label']|safe }} </li></a>
+    <a style="text-decoration: none;" href="/train/{{ tottenville[3]['id'] }}"><li class="list-group-item list-group-item-info"><strong>{{ tottenville[3]['delta']}} </strong>({{ tottenville[3]['stop_time'] }}) {{ tottenville[3]['label']|safe }}</li></a>
+  </ul>
+</div>
+
+<ul class="pager">
+  {% if prev %}
+  <li class="previous"><a href="/station/{{ prev }}">&larr; Previous Station</a></li>
+  {% else %}
+  <li class="previous disabled"><a href="#">&larr; Previous Station</a></li>
+  {% endif %}
+  {% if next %}
+  <li class="next"><a href="/station/{{ next }}">Next Station &rarr;</a></li>
+  {% else %}
+  <li class="next disabled"><a href="#">Next Station &rarr;</a></li>
+  {% endif %}
+</ul>
+{% endblock %}

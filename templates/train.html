@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ name }} - SI Train Time{% endblock %}
+{% block description %}Get the current status of {{ name }}, a train on the Staten Island Railway (SIR).{% endblock %}
+
+{% block content %}
+
+<div class="page-header">
+  <h3> {{ name }} {{ direction_html|safe }} {{ label_html|safe }} </h3> 
+</div>
+
+<a href="{{ request.path }}" type="button" style="width:100%" class="btn btn-primary">Refresh (updated {{ last_updated }})</a>
+
+<br><br>
+
+<!-- 
+none: standard
+disabled: skipped
+info: last stop reached by train (location)
+--> 
+
+<!-- 
+span of color black overrides link decoration of non-stylized list groups
+-->
+{% if is_on_today_schedule %}
+<ul class="list-group">
+	{% for stop in station_times %}
+	{% if (stop['stop'] == previous_stop) and is_running %}
+  <a href="{{ stop['url']|safe }}" style="text-decoration: none;"><li class="list-group-item list-group-item-info"><strong>{{ stop['stop'] }}</strong> {{ stop['delta'] }} ({{ stop['time'] }})</li></a>
+  {% elif stop['skipped'] %}
+  <a href="{{ stop['url']|safe }}" style="text-decoration: none;"><li class="list-group-item disabled"><strong>{{ stop['stop'] }} </strong> {{ stop['delta'] }} ({{ stop['time'] }})</li></a>
+  </span></a>
+  {% else %}
+  <a href="{{ stop['url']|safe }}" style="text-decoration: none;"><li class="list-group-item"><span style="color: black;"><strong>{{ stop['stop'] }}</strong> {{ stop['delta'] }} ({{ stop['time'] }})</span></li></a>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% else %} 
+<div class="alert alert-info" role="alert">This train is not scheduled to run today.</div>
+{% endif %}
+{% endblock %}

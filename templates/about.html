@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}About - SI Train Time{% endblock %}
+{% block description %}SI Train Time was developed by Elvin Shoyfer to create a quick and simple way to find relevant train times along the Staten Island Railway (SIR) on mobile.{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h3> About SI Train Time </h3> 
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+  	<div class="jumbotron">
+  		<div class="row">
+  			<div class="col-md-5">
+  				<img src="{{ url_for('static', filename='elvin.jpg') }}" alt="Elvin" class="img-responsive img-circle">
+  			</div>
+  			<div class="col-md-7">
+  			<h3><strong>Elvin Shoyfer</strong><br><small>Developer</small></h3>
+  			<span class="glyphicon glyphicon-user"></span> Senior at Stuyvesant High School
+  			<br>
+  			<span class="glyphicon glyphicon-home"></span> Lives in Staten Island, New York
+  			<br>
+  			<span class="glyphicon glyphicon-envelope"></span> <a href="mailto:eshoyfer@gmail.com">eshoyfer@gmail.com</a> 
+  			<br>
+  			<i class="fa fa-github-square"></i> <a href="https://github.com/eshoyfer">github.com/eshoyfer</a>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="col-md-6">
+  	<strong>SI Train Time</strong> was developed by Elvin Shoyfer in July 2014 with the aim of creating a quick and simple way to look up relevant train times along the Staten Island Railway (SIR) on mobile devices. <br><br>
+
+  	Times are calculated based on the official <em>MTA Staten Island Railway Timetable</em> provided by the Metropolitan Transportation Authority (MTA). The most recent version is available <a href="http://web.mta.info/nyct/service/pdf/sircur.pdf">here</a> on their website. <br><br>
+
+  	All variations in schedule on the basis of weekday or holiday status are accounted for. Train times are calculations (not real-time) based on the official timetable and may vary due to delays and flunctuations associated with train operation. <br><br>
+
+  	This site is not affiliated with the Metropolitan Transportation Authority.
+  </div>
+</div>
+<br>
+<a href="{{ url_for('index') }}" style="width: 100%" class="btn btn-info btn-lg" role="button">
+<span class="glyphicon glyphicon-home"></span> Take me home
+</a>
+<br><br>
+
+{% endblock %}

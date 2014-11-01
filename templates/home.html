@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}SI Train Time - find the next Staten Island Railway train on the go!{% endblock %}
+{% block description %}SI Train Time provides a quick and simple way to get train arrival information for the Staten Island Railway (SIR) on mobile.{% endblock %}
+
+{% block content %}
+<div class="panel panel-default">
+  <div class="panel-body" style="text-align: center" id="location-info">
+    <img height="22px" width="22px" src="{{ url_for('static', filename='throbber.GIF') }}"> Getting current location...
+  </div>
+</div>
+
+<div id="button-container">
+</div>
+
+<script src="{{ url_for('static', filename='nearest-station.js') }}"></script>
+
+<hr> 
+
+<h4 style="text-align: center;"> <span class="glyphicon glyphicon-th-list"></span> Station list </h4>
+
+<div class="btn-group-vertical" style="width:100%">
+  <a type="button" href="./station/tottenville" class="btn btn-default"> Tottenville</a>
+  <a type="button" href="./station/atlantic" class="btn btn-default"> Atlantic</a>
+  <a type="button" href="./station/nassau" class="btn btn-default"> Nassau</a>
+  <a type="button" href="./station/richmond_valley" class="btn btn-default"> Richmond Valley</a>
+  <a type="button" href="./station/pleasant_plains" class="btn btn-default"> Pleasant Plains</a>
+  <a type="button" href="./station/princes_bay" class="btn btn-default"> Prince's Bay</a>
+  <a type="button" href="./station/huguenot" class="btn btn-default"> Huguenot</a>
+  <a type="button" href="./station/annadale" class="btn btn-default"> Annadale</a>
+  <a type="button" href="./station/eltingville" class="btn btn-default"> Eltingville</a>
+  <a type="button" href="./station/great_kills" class="btn btn-default"> Great Kills</a>
+  <a type="button" href="./station/bay_terrace" class="btn btn-default"> Bay Terrace</a>
+  <a type="button" href="./station/oakwood_heights" class="btn btn-default"> Oakwood Heights</a>
+  <a type="button" href="./station/new_dorp" class="btn btn-default"> New Dorp</a>
+  <a type="button" href="./station/grant_city" class="btn btn-default"> Grant City</a>
+  <a type="button" href="./station/jefferson_av" class="btn btn-default"> Jefferson Av</a>
+  <a type="button" href="./station/dongan_hills" class="btn btn-default"> Dongan Hills</a>
+  <a type="button" href="./station/old_town" class="btn btn-default"> Old Town</a>
+  <a type="button" href="./station/grasmere" class="btn btn-default"> Grasmere</a>
+  <a type="button" href="./station/clifton" class="btn btn-default"> Clifton</a>
+  <a type="button" href="./station/stapleton" class="btn btn-default"> Stapleton</a>
+  <a type="button" href="./station/tompkinsville" class="btn btn-default"> Tompkinsville</a>
+  <a type="button" href="./station/st_george" class="btn btn-default"> St George</a>
+</div>
+
+<br> <hr>
+
+<a href="{{ url_for('about') }}" style="width: 100%" class="btn btn-info btn-lg" role="button">
+  <span class="glyphicon glyphicon-info-sign"></span> About
+</a>
+
+<br><br>
+{% endblock %}
